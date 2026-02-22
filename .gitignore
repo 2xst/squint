@@ -1,4 +1,6 @@
-/.direnv
-/target
+.direnv/
+
+/target/
+
 .env
-Cargo.lock
+.DS_Store
