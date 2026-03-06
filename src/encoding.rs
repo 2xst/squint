@@ -33,9 +33,7 @@ pub fn parse(digits: &str) -> Option<u128> {
         Some(0) | None => None,
         Some(size) => Some(size as usize),
     }?;
-    let encoding_size = ENCODING_LENGTH
-        .checked_sub(padding_size)
-        .unwrap_or_default();
+    let encoding_size = ENCODING_LENGTH.saturating_sub(padding_size);
     let n = parse_number(digits.by_ref().take(encoding_size))?;
     let filler_padding = gen_padding(n, padding_size).take(padding_size - PADDING_SIZE_LEN);
     if digits.eq(filler_padding) {
